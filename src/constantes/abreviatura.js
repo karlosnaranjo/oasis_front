@@ -1,0 +1,31 @@
+const PERSONA_NATURAL = "PN";
+const PERSONA_JURIDICA = "PJ";
+const HORA = "H";
+const DIA = "D";
+const PRODUCTO_TERMINADO = "PT";
+const RECEPCION = "R";
+const FIELD_TYPE_TEXT = "T";
+const FIELD_TYPE_SELECT = "S";
+const FIELD_TYPE_NUMBER = "N";
+const FIELD_TYPE_LOGIC = "L";
+const FIELD_TYPE_DATE = "F";
+const FIELD_TYPE_MULTIPLE = "M";
+const FIELD_TYPE_INPUTTAG = "IT";
+
+const abreviaturas = {
+  PERSONA_JURIDICA,
+  PERSONA_NATURAL,
+  HORA,
+  DIA,
+  PRODUCTO_TERMINADO,
+  RECEPCION,
+  FIELD_TYPE_TEXT,
+  FIELD_TYPE_SELECT,
+  FIELD_TYPE_NUMBER,
+  FIELD_TYPE_LOGIC,
+  FIELD_TYPE_DATE,
+  FIELD_TYPE_MULTIPLE,
+  FIELD_TYPE_INPUTTAG,
+};
+
+export default abreviaturas;
