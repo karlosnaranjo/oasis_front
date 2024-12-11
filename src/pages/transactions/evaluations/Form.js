@@ -31,6 +31,7 @@ const validationSchema = Yup.object({
 });
 
 const urlBase = endPoints.transactions.evaluations.base;
+const targetsByPhaseUrl = `${urlBase}/targets-by-phase`;
 
 let patientList = [];
 let phaseList = [];
@@ -161,6 +162,26 @@ code, patient_id, creation_date, phase_id, target_id, start_date, end_date, clin
         }
     };
 
+    const handlePhaseChange = async (selectedOption, formikProps) => {
+        try {
+            if (selectedOption) {
+                const params = {
+                    url: targetsByPhaseUrl,
+                    data: { phase_id: selectedOption }
+                };
+                const resp = await doGet(params);
+                targetList = selectMap(resp.targets);
+                formikProps.setFieldValue('target_id', null);
+            } else {
+                targetList = [];
+                formikProps.setFieldValue('target_id', null);
+            }
+        } catch (error) {
+            console.log('ERROR AL CARGAR OBJETIVOS '+error);
+            genericException(error);
+        }
+    };
+
     return (
     <>
         {isLoading ? (
@@ -198,7 +219,7 @@ code, patient_id, creation_date, phase_id, target_id, start_date, end_date, clin
             
                                 <Grid item xs={6} md={6} xl={6}>
                                     <Field label="Fase" name="phase_id" component={SelectBase} items={phaseList}  
-                                        /*onOptionSelected={(selectedOption) => handleOnChangephase_id(selectedOption, subProps)} */
+                                        onOptionSelected={(selectedOption) => handlePhaseChange(selectedOption, subProps)}
                                     />
                                 </Grid>
                     
