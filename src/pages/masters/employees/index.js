@@ -101,7 +101,6 @@ const EmployeesGrid = (props) => {
 		{ name: 'name', label: 'Nombres' },
 		{ name: 'image', label: 'Imagen' },
 		{ name: 'gender', label: 'Genero' },
-		{ name: 'marital_status', label: 'Estado Civil' },
 		{ name: 'date_of_birth', label: 'Fecha de Nacimiento' },
 		{ name: 'address1', label: 'Direccion 1' },
 		{ name: 'address2', label: 'Direccion 2' },

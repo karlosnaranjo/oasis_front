@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Grid,  } from '@mui/material';
 import { Form, Field, Formik } from 'formik';
 import * as Yup from 'yup';
-import { SelectBase, TextBase,  Loader } from 'components';
+import { SelectBase, TextBase, TextAreaBase, Loader } from 'components';
 import endPoints from 'endPoints/endPoints';
 import messages from 'constantes/messages';
 import { withApi, withNotification } from 'wrappers';
@@ -220,7 +220,7 @@ document_type, code, name, image, gender, marital_status, date_of_birth, address
                         </Grid>
             
                         <Grid item xs={6} md={6} xl={6}>
-                            <Field label="Direccion 2" name="address2" component={TextBase} 
+                            <Field label="Direccion 2" name="address2" component={TextAreaBase} 
                                 //onClick={(event) => handleChangeaddress2(event)} 
                             />
                         </Grid>

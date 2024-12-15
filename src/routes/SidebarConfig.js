@@ -67,10 +67,6 @@ const sidebarConfig = [
                 path: PATH_APP.masters.phases, 
                 //permissions: "general:masters:phases:list" 
               },
-              { title: "Objetivos", 
-                path: PATH_APP.masters.targets, 
-                //permissions: "general:masters:targets:list" 
-              },
             ],
           },
           {

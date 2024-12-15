@@ -26,6 +26,7 @@ const TargetsGrid = ({
   const [idToRemove, setIdToRemove] = useState(null);
   const [idToUpdate, setIdToUpdate] = useState(null);
   const phase_id = id;
+  console.log(phase_id);
   const [openModal, setOpenModal] = useState(false);
   const child = useRef(null);
 
