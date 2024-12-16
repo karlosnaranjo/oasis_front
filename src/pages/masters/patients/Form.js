@@ -332,7 +332,7 @@ const PatientsForm = ({
                                         accept="image/*"
                                         caption={
                                             <Typography variant="caption">
-                                                Upload your profile picture
+                                                Cargue la foto del paciente
                                             </Typography>
                                         }
                                     />
