@@ -40,17 +40,17 @@ const endPoints = {
       base: "evaluations",
       initForm: "evaluations/initform",
     },
-    psychology_relatives: {
-      base: "psychologyRelatives",
-      initForm: "psychologyRelatives/initform",
+    psychologyRelatives: {
+      base: "psychologies_relatives",
+      initForm: "psychologies_relatives/initform",
     },
 
-    psychology_drugs: {
-      base: "psychologyDrugs",
-      initForm: "psychologyDrugs/initform",
+    psychologyDrugs: {
+      base: "psychologies_drugs",
+      initForm: "psychologies_drugs/initform",
     },
 
-    
+
   },
   seguridad: {
     usuarios: {
