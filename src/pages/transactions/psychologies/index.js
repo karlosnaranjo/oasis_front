@@ -9,6 +9,7 @@ import { ConfirmModal } from "components/dialogs";
 import masterMessages from "constantes/masterMessages";
 import Form from "./Form";
 import { getStatusLabel } from "utils/formHelpers";
+import Avatar from "@mui/material/Avatar";
 
 const {
     transactions: {
@@ -96,6 +97,17 @@ const PsychologiesGrid = (props) => {
     );
 
     const columns = [
+        {
+            name: "image",
+            label: "Imagen",
+            component: (row) => (
+                <Avatar
+                    alt={row.name}
+                    src={row.image}
+                    style={{ width: "50px", height: "50px" }}
+                />
+            ),
+        },
         { name: 'patient_name', label: 'Paciente' },
         { name: 'code', label: 'Codigo' },
         { name: 'issue_date', label: 'Fecha de Elaboración' },

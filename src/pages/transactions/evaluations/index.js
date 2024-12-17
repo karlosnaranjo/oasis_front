@@ -9,6 +9,7 @@ import { ConfirmModal } from "components/dialogs";
 import masterMessages from "constantes/masterMessages";
 import Form from "./Form";
 import { getStatusLabel } from "utils/formHelpers";
+import Avatar from "@mui/material/Avatar";
 
 const {
     transactions: {
@@ -97,6 +98,17 @@ const EvaluationsGrid = (props) => {
 
     const columns = [
         //	{ name: 'code', label: 'Codigo' },
+        {
+            name: "image",
+            label: "Imagen",
+            component: (row) => (
+                <Avatar
+                    alt={row.name}
+                    src={row.image}
+                    style={{ width: "50px", height: "50px" }}
+                />
+            ),
+        },
         { name: 'patient_name', label: 'Paciente' },
         { name: 'creation_date', label: 'Fecha de Creacion' },
         { name: 'phase_name', label: 'Fase' },
