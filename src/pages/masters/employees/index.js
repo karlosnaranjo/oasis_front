@@ -11,22 +11,22 @@ import Form from "./Form";
 import { getStatusLabel } from "utils/formHelpers";
 
 const {
-  masters: {
-    employees: {
-      title,
-      deleteTitle,
-      deleteMessage,
-      changeStatusTitle,
-      changeStatusMessage,
+    masters: {
+        employees: {
+            title,
+            deleteTitle,
+            deleteMessage,
+            changeStatusTitle,
+            changeStatusMessage,
+        },
     },
-  },
 } = masterMessages;
 
 const permissions = {
-  createPermissions: "general:masters:employees:create",
-  updatePermissions: "general:masters:employees:update",
-  deletePermissions: "general:masters:employees:delete",
-  changeStatusPermissions: "general:masters:employees:changeStatus",
+    createPermissions: "general:masters:employees:create",
+    updatePermissions: "general:masters:employees:update",
+    deletePermissions: "general:masters:employees:delete",
+    changeStatusPermissions: "general:masters:employees:changeStatus",
 };
 
 const EmployeesGrid = (props) => {
@@ -39,33 +39,33 @@ const EmployeesGrid = (props) => {
     const onDelete = async () => {
         const url = `${endPoints.masters.employees.base}/${idToDelete}`;
         try {
-        await props.doDelete({ url });
-        tableRef.current.refresh();
-        closeModalDelete();
-        props.appWarning(messages.crud.delete);
+            await props.doDelete({ url });
+            tableRef.current.refresh();
+            closeModalDelete();
+            props.appWarning(messages.crud.delete);
         } catch (error) {
-        props.appError(messages.crud.fail);
+            props.appError(messages.crud.fail);
         } finally {
-        setIdToDelete(null);
+            setIdToDelete(null);
         }
     };
 
     const onChangeStatus = async () => {
         const url = `${endPoints.masters.employees.base}/changestatus/${idChangeStatus}`;
         try {
-        await props.doPut({ url });
-        props.appWarning(messages.crud.changeStatus);
-        tableRef.current.refresh();
+            await props.doPut({ url });
+            props.appWarning(messages.crud.changeStatus);
+            tableRef.current.refresh();
         } catch (error) {
-        props.appError(messages.crud.fail);
+            props.appError(messages.crud.fail);
         } finally {
-        setIdChangeStatus(null);
+            setIdChangeStatus(null);
         }
     };
 
     useEffect(() => {
         if (!openModal) {
-        setIdToEdit(null);
+            setIdToEdit(null);
         }
     }, [openModal]);
 
@@ -90,24 +90,24 @@ const EmployeesGrid = (props) => {
         <DefaultActions
             row={row}
             onEdit={() => redirectEdit(row.id)}
-            onDelete={() => openModalDelete(row)}
+            //  onDelete={() => openModalDelete(row)}
             onChangeStatus={() => setIdChangeStatus(row.id)}
         />
     );
 
     const columns = [
-		{ name: 'document_type', label: 'Tipo de documento' },
-		{ name: 'code', label: 'Numero' },
-		{ name: 'name', label: 'Nombres' },
-		{ name: 'image', label: 'Imagen' },
-		{ name: 'gender', label: 'Genero' },
-		{ name: 'date_of_birth', label: 'Fecha de Nacimiento' },
-		{ name: 'address1', label: 'Direccion 1' },
-		{ name: 'address2', label: 'Direccion 2' },
-		{ name: 'phone', label: 'Telefono' },
-		{ name: 'cellphone', label: 'Celular' },
-		{ name: 'email', label: 'E-Mail' },
-		{ name: 'job_title', label: 'Cargo' },
+        { name: 'document_type', label: 'Tipo de documento' },
+        { name: 'image', label: 'Imagen' },
+        { name: 'code', label: 'Numero' },
+        { name: 'name', label: 'Nombres' },
+        //  { name: 'gender', label: 'Genero' },
+        //  { name: 'date_of_birth', label: 'Fecha de Nacimiento' },
+        //  { name: 'address1', label: 'Direccion 1' },
+        //  { name: 'address2', label: 'Direccion 2' },
+        { name: 'phone', label: 'Telefono' },
+        { name: 'cellphone', label: 'Celular' },
+        { name: 'email', label: 'E-Mail' },
+        { name: 'job_title', label: 'Cargo' },
 
         {
             label: "Estado",
@@ -137,19 +137,19 @@ const EmployeesGrid = (props) => {
             )}
             {Boolean(idChangeStatus) && (
                 <ConfirmModal
-                open
-                title={changeStatusTitle}
-                message={changeStatusMessage}
-                onClose={() => setIdChangeStatus(null)}
-                onAccept={() => onChangeStatus()}
-                createPermissions={permissions.changeStatusPermissions}
+                    open
+                    title={changeStatusTitle}
+                    message={changeStatusMessage}
+                    onClose={() => setIdChangeStatus(null)}
+                    onAccept={() => onChangeStatus()}
+                    createPermissions={permissions.changeStatusPermissions}
                 />
             )}
             {openModal && (
                 <Form
-                id={idToEdit}
-                setOpenModal={setOpenModal}
-                refreshData={tableRef}
+                    id={idToEdit}
+                    setOpenModal={setOpenModal}
+                    refreshData={tableRef}
                 />
             )}
             <Table

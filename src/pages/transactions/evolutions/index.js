@@ -11,22 +11,22 @@ import Form from "./Form";
 import { getStatusLabel } from "utils/formHelpers";
 
 const {
-  transactions: {
-    evolutions: {
-      title,
-      deleteTitle,
-      deleteMessage,
-      changeStatusTitle,
-      changeStatusMessage,
+    transactions: {
+        evolutions: {
+            title,
+            deleteTitle,
+            deleteMessage,
+            changeStatusTitle,
+            changeStatusMessage,
+        },
     },
-  },
 } = masterMessages;
 
 const permissions = {
-  createPermissions: "general:transactions:evolutions:create",
-  updatePermissions: "general:transactions:evolutions:update",
-  deletePermissions: "general:transactions:evolutions:delete",
-  changeStatusPermissions: "general:transactions:evolutions:changeStatus",
+    createPermissions: "general:transactions:evolutions:create",
+    updatePermissions: "general:transactions:evolutions:update",
+    deletePermissions: "general:transactions:evolutions:delete",
+    changeStatusPermissions: "general:transactions:evolutions:changeStatus",
 };
 
 const EvolutionsGrid = (props) => {
@@ -39,33 +39,33 @@ const EvolutionsGrid = (props) => {
     const onDelete = async () => {
         const url = `${endPoints.transactions.evolutions.base}/${idToDelete}`;
         try {
-        await props.doDelete({ url });
-        tableRef.current.refresh();
-        closeModalDelete();
-        props.appWarning(messages.crud.delete);
+            await props.doDelete({ url });
+            tableRef.current.refresh();
+            closeModalDelete();
+            props.appWarning(messages.crud.delete);
         } catch (error) {
-        props.appError(messages.crud.fail);
+            props.appError(messages.crud.fail);
         } finally {
-        setIdToDelete(null);
+            setIdToDelete(null);
         }
     };
 
     const onChangeStatus = async () => {
         const url = `${endPoints.transactions.evolutions.base}/changestatus/${idChangeStatus}`;
         try {
-        await props.doPut({ url });
-        props.appWarning(messages.crud.changeStatus);
-        tableRef.current.refresh();
+            await props.doPut({ url });
+            props.appWarning(messages.crud.changeStatus);
+            tableRef.current.refresh();
         } catch (error) {
-        props.appError(messages.crud.fail);
+            props.appError(messages.crud.fail);
         } finally {
-        setIdChangeStatus(null);
+            setIdChangeStatus(null);
         }
     };
 
     useEffect(() => {
         if (!openModal) {
-        setIdToEdit(null);
+            setIdToEdit(null);
         }
     }, [openModal]);
 
@@ -90,18 +90,18 @@ const EvolutionsGrid = (props) => {
         <DefaultActions
             row={row}
             onEdit={() => redirectEdit(row.id)}
-            onDelete={() => openModalDelete(row)}
+            //onDelete={() => openModalDelete(row)}
             onChangeStatus={() => setIdChangeStatus(row.id)}
         />
     );
 
     const columns = [
-		{ name: 'code', label: 'Codigo' },
-		{ name: 'patient_name', label: 'Paciente' },
-		{ name: 'employee_name', label: 'Empleado' },
-		{ name: 'date_of_evolution', label: 'Fecha de registro' },
-		{ name: 'area', label: 'Area que registra evolucion' },
-		{ name: 'comments', label: 'Notas' },
+        //{ name: 'code', label: 'Codigo' },
+        { name: 'patient_name', label: 'Paciente' },
+        { name: 'date_of_evolution', label: 'Fecha de registro' },
+        { name: 'area', label: 'Area que registra evolucion' },
+        //{ name: 'comments', label: 'Notas' },
+        { name: 'employee_name', label: 'Empleado' },
 
         {
             label: "Estado",
@@ -131,19 +131,19 @@ const EvolutionsGrid = (props) => {
             )}
             {Boolean(idChangeStatus) && (
                 <ConfirmModal
-                open
-                title={changeStatusTitle}
-                message={changeStatusMessage}
-                onClose={() => setIdChangeStatus(null)}
-                onAccept={() => onChangeStatus()}
-                createPermissions={permissions.changeStatusPermissions}
+                    open
+                    title={changeStatusTitle}
+                    message={changeStatusMessage}
+                    onClose={() => setIdChangeStatus(null)}
+                    onAccept={() => onChangeStatus()}
+                    createPermissions={permissions.changeStatusPermissions}
                 />
             )}
             {openModal && (
                 <Form
-                id={idToEdit}
-                setOpenModal={setOpenModal}
-                refreshData={tableRef}
+                    id={idToEdit}
+                    setOpenModal={setOpenModal}
+                    refreshData={tableRef}
                 />
             )}
             <Table

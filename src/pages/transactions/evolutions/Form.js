@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Grid,  } from '@mui/material';
+import { Grid, } from '@mui/material';
 import { Form, Field, Formik } from 'formik';
 import * as Yup from 'yup';
-import { TextBase, SelectBase,  Loader } from 'components';
+import { TextBase, SelectBase, TextAreaBase, Loader } from 'components';
 import endPoints from 'endPoints/endPoints';
 import messages from 'constantes/messages';
 import { withApi, withNotification } from 'wrappers';
@@ -14,14 +14,14 @@ import { getStatusLabel, getStatusValue } from 'utils/formHelpers';
 import DatePickerBase from 'components/pickers/DatePickerBase';
 
 const validationSchema = Yup.object({
-   	code: Yup.string().required('Codigo es requerido'),
-	patient_id: Yup.string().required('Paciente es requerido'),
-	employee_id: Yup.string().required('Empleado es requerido'),
-	date_of_evolution: Yup.string().required('Fecha de registro es requerido'),
-	area: Yup.string().required('Area que registra evolucion es requerido'),
-	comments: Yup.string().required('Notas es requerido'),
-	status: Yup.string().required('Estado es requerido'),
- 
+    code: Yup.string().required('Codigo es requerido'),
+    patient_id: Yup.string().required('Paciente es requerido'),
+    employee_id: Yup.string().required('Empleado es requerido'),
+    date_of_evolution: Yup.string().required('Fecha de registro es requerido'),
+    area: Yup.string().required('Area que registra evolucion es requerido'),
+    comments: Yup.string().required('Notas es requerido'),
+    status: Yup.string().required('Estado es requerido'),
+
 });
 
 const urlBase = endPoints.transactions.evolutions.base;
@@ -33,13 +33,13 @@ let employeeList = [];
 const baseUrl = '/app/general/transactions/evolutions';
 
 const initState = {
-    	code: false,
-	patient_id: null,
-	employee_id: null,
-	date_of_evolution: false,
-	area: false,
-	comments: false,
-	status: 1,
+    code: false,
+    patient_id: null,
+    employee_id: null,
+    date_of_evolution: false,
+    area: false,
+    comments: false,
+    status: 1,
 
 };
 
@@ -58,48 +58,48 @@ const EvolutionsForm = ({
     setEditable,
     viewMode,
     refresh,
-    }) => {
+}) => {
     const navigate = useNavigate();
     const [state, setState] = useState(initState);
     const [isLoading, setLoading] = useState(true);
 
     // Call to API for load form values
     const loadFields = useCallback(async () => {
-    const params = {
-        url: endPoints.transactions.evolutions.initForm,
-        data: id ? { id: id } : {}
-    };
-    const resp = await doGet(params);
-    return resp;
+        const params = {
+            url: endPoints.transactions.evolutions.initForm,
+            data: id ? { id: id } : {}
+        };
+        const resp = await doGet(params);
+        return resp;
     }, [doGet, id, refresh, setEditable]);
 
     const init = useCallback(async () => {
-    try {
-        const { evolutions, patient, employee,  } = await loadFields();
-patientList = selectMap(patient);
-employeeList = selectMap(employee);
+        try {
+            const { evolutions, patient, employee, } = await loadFields();
+            patientList = selectMap(patient);
+            employeeList = selectMap(employee);
 
 
-        const {
-code, patient_id, employee_id, date_of_evolution, area, comments, status, 
-        } = evolutions;
+            const {
+                code, patient_id, employee_id, date_of_evolution, area, comments, status,
+            } = evolutions;
 
-        setState({
-			code: code || "",
-			patient_id: patient_id || null,
-			employee_id: employee_id || null,
-			date_of_evolution: date_of_evolution || "",
-			area: area || "",
-			comments: comments || "",
-			status: getStatusLabel(status) || "Activo",
+            setState({
+                code: code || "",
+                patient_id: patient_id || null,
+                employee_id: employee_id || null,
+                date_of_evolution: date_of_evolution || "",
+                area: area || "",
+                comments: comments || "",
+                status: getStatusLabel(status) || "Activo",
 
-        });
+            });
 
-        setLoading(false);
-    } catch (error) {
-        console.log('ERROR AL INICIAR'+error);
-        genericException(error);
-    }
+            setLoading(false);
+        } catch (error) {
+            console.log('ERROR AL INICIAR' + error);
+            genericException(error);
+        }
     }, [genericException, loadFields]);
 
     useEffect(() => {
@@ -111,9 +111,9 @@ code, patient_id, employee_id, date_of_evolution, area, comments, status,
     };
 
     const mapValues = (values) => {
-        const { code, patient_id, employee_id, date_of_evolution, area, comments, status,  } = values;
+        const { code, patient_id, employee_id, date_of_evolution, area, comments, status, } = values;
         return {
-code, patient_id, employee_id, date_of_evolution, area, comments, status: getStatusValue(status), 
+            code, patient_id, employee_id, date_of_evolution, area, comments, status: getStatusValue(status),
         };
     };
 
@@ -135,74 +135,74 @@ code, patient_id, employee_id, date_of_evolution, area, comments, status: getSta
                 redirectEdit(resp.response.data.id);
             }
         } catch (error) {
-            console.log('ERROR AL GUARDAR '+error);
+            console.log('ERROR AL GUARDAR ' + error);
             genericException(error);
         }
     };
 
     return (
-    <>
-        {isLoading ? (
-            <Box p={10}>
-                <Loader />
-            </Box>
-        ) : (
-            <Formik enableReinitialize initialValues={state} validationSchema={validationSchema} onSubmit={submit}>
-                {(subProps) => (
-                <Form>
-                    {!id && viewMode ? (
-                    <FormButtons formProps={subProps} />
-                    ) : (
-                    <FormButtons formProps={subProps} />
+        <>
+            {isLoading ? (
+                <Box p={10}>
+                    <Loader />
+                </Box>
+            ) : (
+                <Formik enableReinitialize initialValues={state} validationSchema={validationSchema} onSubmit={submit}>
+                    {(subProps) => (
+                        <Form>
+                            {!id && viewMode ? (
+                                <FormButtons formProps={subProps} />
+                            ) : (
+                                <FormButtons formProps={subProps} />
+                            )}
+                            <Grid container direction="row" spacing={2}>
+
+                                <Grid item xs={6} md={6} xl={6}>
+                                    <Field label="Codigo" name="code" component={TextBase}
+                                    //onClick={(event) => handleChangecode(event)} 
+                                    />
+                                </Grid>
+
+                                <Grid item xs={6} md={6} xl={6}>
+                                    <Field label="Paciente" name="patient_id" component={SelectBase} items={patientList}
+                                    /*onOptionSelected={(selectedOption) => handleOnChangepatient_id(selectedOption, subProps)} */
+                                    />
+                                </Grid>
+
+                                <Grid item xs={6} md={6} xl={6}>
+                                    <Field label="Empleado" name="employee_id" component={SelectBase} items={employeeList}
+                                    /*onOptionSelected={(selectedOption) => handleOnChangeemployee_id(selectedOption, subProps)} */
+                                    />
+                                </Grid>
+
+                                <Grid item xs={6} md={6} xl={6}>
+                                    <Field label="Fecha de registro" name="date_of_evolution" component={DatePickerBase}
+                                    //onClick={(event) => handleChangedate_of_evolution(event)} 
+                                    />
+                                </Grid>
+
+                                <Grid item xs={6} md={6} xl={6}>
+                                    <Field label="Area que registra evolucion" name="area" component={TextBase}
+                                    //onClick={(event) => handleChangearea(event)} 
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} md={12} xl={12}>
+                                    <Field label="Notas" name="comments" component={TextAreaBase}
+                                    //onClick={(event) => handleChangecomments(event)} 
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} md={6} xl={6}>
+                                    <Field label="Estado" name="status" component={TextBase} disabled={true} />
+                                </Grid>
+
+                            </Grid>
+                        </Form>
                     )}
-                    <Grid container direction="row" spacing={2}>
-    
-                        <Grid item xs={6} md={6} xl={6}>
-                            <Field label="Codigo" name="code" component={TextBase} 
-                                //onClick={(event) => handleChangecode(event)} 
-                            />
-                        </Grid>
-            
-                                <Grid item xs={6} md={6} xl={6}>
-                                    <Field label="Paciente" name="patient_id" component={SelectBase} items={patientList}  
-                                        /*onOptionSelected={(selectedOption) => handleOnChangepatient_id(selectedOption, subProps)} */
-                                    />
-                                </Grid>
-                    
-                                <Grid item xs={6} md={6} xl={6}>
-                                    <Field label="Empleado" name="employee_id" component={SelectBase} items={employeeList}  
-                                        /*onOptionSelected={(selectedOption) => handleOnChangeemployee_id(selectedOption, subProps)} */
-                                    />
-                                </Grid>
-                    
-                        <Grid item xs={6} md={6} xl={6}>
-                            <Field label="Fecha de registro" name="date_of_evolution" component={DatePickerBase} 
-                                //onClick={(event) => handleChangedate_of_evolution(event)} 
-                            />
-                        </Grid>
-            
-                        <Grid item xs={6} md={6} xl={6}>
-                            <Field label="Area que registra evolucion" name="area" component={TextBase} 
-                                //onClick={(event) => handleChangearea(event)} 
-                            />
-                        </Grid>
-            
-                        <Grid item xs={6} md={6} xl={6}>
-                            <Field label="Notas" name="comments" component={TextBase} 
-                                //onClick={(event) => handleChangecomments(event)} 
-                            />
-                        </Grid>
-            
-                        <Grid item xs={12} md={6} xl={6}>
-                            <Field label="Estado" name="status" component={TextBase} disabled={true} />
-                        </Grid>
-            
-                    </Grid>
-                </Form>
-                )}
-            </Formik>
-        )}
-    </>
+                </Formik>
+            )}
+        </>
     );
 };
 

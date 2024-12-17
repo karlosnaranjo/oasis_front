@@ -91,7 +91,7 @@ const PatientsGrid = (props) => {
         <DefaultActions
             row={row}
             onEdit={() => redirectEdit(row.id)}
-            onDelete={() => openModalDelete(row)}
+            //    onDelete={() => openModalDelete(row)}
             onChangeStatus={() => setIdChangeStatus(row.id)}
         />
     );

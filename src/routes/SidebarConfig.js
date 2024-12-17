@@ -47,24 +47,24 @@ const sidebarConfig = [
             path: `${ROOTS_GENERAL}masters`,
             icon: ICONS.settings,
             children: [
-              { title: "Empleados", 
-                path: PATH_APP.masters.employees, 
+              {
+                title: "Empleados",
+                path: PATH_APP.masters.employees,
                 //permissions: "general:masters:employees:list" 
               },
-              { title: "Drogas", 
-                path: PATH_APP.masters.drugs, 
+              {
+                title: "Drogas",
+                path: PATH_APP.masters.drugs,
                 //permissions: "general:masters:drugs:list" 
               },
-              { title: "Pacientes", 
-                path: PATH_APP.masters.patients, 
+              {
+                title: "Pacientes",
+                path: PATH_APP.masters.patients,
                 //permissions: "general:masters:patients:list" 
               },
-              { title: "Familiares", 
-                path: PATH_APP.masters.relatives, 
-                //permissions: "general:masters:relatives:list" 
-              },
-              { title: "Fases", 
-                path: PATH_APP.masters.phases, 
+              {
+                title: "Fases",
+                path: PATH_APP.masters.phases,
                 //permissions: "general:masters:phases:list" 
               },
             ],
@@ -74,16 +74,19 @@ const sidebarConfig = [
             path: `${ROOTS_GENERAL}transactions`,
             icon: ICONS.settings,
             children: [
-              { title: "Psicología", 
-                path: PATH_APP.transactions.psychologies, 
+              {
+                title: "Psicología",
+                path: PATH_APP.transactions.psychologies,
                 //permissions: "general:transactions:psychologies:list" 
               },
-              { title: "Evaluaciones", 
-                path: PATH_APP.transactions.evaluations, 
+              {
+                title: "Evaluaciones",
+                path: PATH_APP.transactions.evaluations,
                 //permissions: "general:transactions:evaluations:list" 
               },
-              { title: "Evoluciones", 
-                path: PATH_APP.transactions.evolutions, 
+              {
+                title: "Evoluciones",
+                path: PATH_APP.transactions.evolutions,
                 //permissions: "general:transactions:evolutions:list" 
               },
             ],
@@ -93,7 +96,7 @@ const sidebarConfig = [
       },
     ],
   },
-   // SECURITY
+  // SECURITY
   // ----------------------------------------------------------------------
   {
     subheader: "Seguridad",
@@ -109,7 +112,7 @@ const sidebarConfig = [
       },
     ],
   },
-  
+
 ];
 
 export default sidebarConfig;

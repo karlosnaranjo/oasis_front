@@ -11,22 +11,22 @@ import Form from "./Form";
 import { getStatusLabel } from "utils/formHelpers";
 
 const {
-  masters: {
-    phases: {
-      title,
-      deleteTitle,
-      deleteMessage,
-      changeStatusTitle,
-      changeStatusMessage,
+    masters: {
+        phases: {
+            title,
+            deleteTitle,
+            deleteMessage,
+            changeStatusTitle,
+            changeStatusMessage,
+        },
     },
-  },
 } = masterMessages;
 
 const permissions = {
-  createPermissions: "general:masters:phases:create",
-  updatePermissions: "general:masters:phases:update",
-  deletePermissions: "general:masters:phases:delete",
-  changeStatusPermissions: "general:masters:phases:changeStatus",
+    createPermissions: "general:masters:phases:create",
+    updatePermissions: "general:masters:phases:update",
+    deletePermissions: "general:masters:phases:delete",
+    changeStatusPermissions: "general:masters:phases:changeStatus",
 };
 
 const PhasesGrid = (props) => {
@@ -39,33 +39,33 @@ const PhasesGrid = (props) => {
     const onDelete = async () => {
         const url = `${endPoints.masters.phases.base}/${idToDelete}`;
         try {
-        await props.doDelete({ url });
-        tableRef.current.refresh();
-        closeModalDelete();
-        props.appWarning(messages.crud.delete);
+            await props.doDelete({ url });
+            tableRef.current.refresh();
+            closeModalDelete();
+            props.appWarning(messages.crud.delete);
         } catch (error) {
-        props.appError(messages.crud.fail);
+            props.appError(messages.crud.fail);
         } finally {
-        setIdToDelete(null);
+            setIdToDelete(null);
         }
     };
 
     const onChangeStatus = async () => {
         const url = `${endPoints.masters.phases.base}/changestatus/${idChangeStatus}`;
         try {
-        await props.doPut({ url });
-        props.appWarning(messages.crud.changeStatus);
-        tableRef.current.refresh();
+            await props.doPut({ url });
+            props.appWarning(messages.crud.changeStatus);
+            tableRef.current.refresh();
         } catch (error) {
-        props.appError(messages.crud.fail);
+            props.appError(messages.crud.fail);
         } finally {
-        setIdChangeStatus(null);
+            setIdChangeStatus(null);
         }
     };
 
     useEffect(() => {
         if (!openModal) {
-        setIdToEdit(null);
+            setIdToEdit(null);
         }
     }, [openModal]);
 
@@ -90,14 +90,14 @@ const PhasesGrid = (props) => {
         <DefaultActions
             row={row}
             onEdit={() => redirectEdit(row.id)}
-            onDelete={() => openModalDelete(row)}
+            //   onDelete={() => openModalDelete(row)}
             onChangeStatus={() => setIdChangeStatus(row.id)}
         />
     );
 
     const columns = [
-		{ name: 'code', label: 'Codigo' },
-		{ name: 'name', label: 'Nombre fase' },
+        { name: 'code', label: 'Codigo' },
+        { name: 'name', label: 'Nombre fase' },
 
         {
             label: "Estado",
@@ -127,19 +127,19 @@ const PhasesGrid = (props) => {
             )}
             {Boolean(idChangeStatus) && (
                 <ConfirmModal
-                open
-                title={changeStatusTitle}
-                message={changeStatusMessage}
-                onClose={() => setIdChangeStatus(null)}
-                onAccept={() => onChangeStatus()}
-                createPermissions={permissions.changeStatusPermissions}
+                    open
+                    title={changeStatusTitle}
+                    message={changeStatusMessage}
+                    onClose={() => setIdChangeStatus(null)}
+                    onAccept={() => onChangeStatus()}
+                    createPermissions={permissions.changeStatusPermissions}
                 />
             )}
             {openModal && (
                 <Form
-                id={idToEdit}
-                setOpenModal={setOpenModal}
-                refreshData={tableRef}
+                    id={idToEdit}
+                    setOpenModal={setOpenModal}
+                    refreshData={tableRef}
                 />
             )}
             <Table

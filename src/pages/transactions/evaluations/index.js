@@ -11,22 +11,22 @@ import Form from "./Form";
 import { getStatusLabel } from "utils/formHelpers";
 
 const {
-  transactions: {
-    evaluations: {
-      title,
-      deleteTitle,
-      deleteMessage,
-      changeStatusTitle,
-      changeStatusMessage,
+    transactions: {
+        evaluations: {
+            title,
+            deleteTitle,
+            deleteMessage,
+            changeStatusTitle,
+            changeStatusMessage,
+        },
     },
-  },
 } = masterMessages;
 
 const permissions = {
-  createPermissions: "general:transactions:evaluations:create",
-  updatePermissions: "general:transactions:evaluations:update",
-  deletePermissions: "general:transactions:evaluations:delete",
-  changeStatusPermissions: "general:transactions:evaluations:changeStatus",
+    createPermissions: "general:transactions:evaluations:create",
+    updatePermissions: "general:transactions:evaluations:update",
+    deletePermissions: "general:transactions:evaluations:delete",
+    changeStatusPermissions: "general:transactions:evaluations:changeStatus",
 };
 
 const EvaluationsGrid = (props) => {
@@ -39,33 +39,33 @@ const EvaluationsGrid = (props) => {
     const onDelete = async () => {
         const url = `${endPoints.transactions.evaluations.base}/${idToDelete}`;
         try {
-        await props.doDelete({ url });
-        tableRef.current.refresh();
-        closeModalDelete();
-        props.appWarning(messages.crud.delete);
+            await props.doDelete({ url });
+            tableRef.current.refresh();
+            closeModalDelete();
+            props.appWarning(messages.crud.delete);
         } catch (error) {
-        props.appError(messages.crud.fail);
+            props.appError(messages.crud.fail);
         } finally {
-        setIdToDelete(null);
+            setIdToDelete(null);
         }
     };
 
     const onChangeStatus = async () => {
         const url = `${endPoints.transactions.evaluations.base}/changestatus/${idChangeStatus}`;
         try {
-        await props.doPut({ url });
-        props.appWarning(messages.crud.changeStatus);
-        tableRef.current.refresh();
+            await props.doPut({ url });
+            props.appWarning(messages.crud.changeStatus);
+            tableRef.current.refresh();
         } catch (error) {
-        props.appError(messages.crud.fail);
+            props.appError(messages.crud.fail);
         } finally {
-        setIdChangeStatus(null);
+            setIdChangeStatus(null);
         }
     };
 
     useEffect(() => {
         if (!openModal) {
-        setIdToEdit(null);
+            setIdToEdit(null);
         }
     }, [openModal]);
 
@@ -90,24 +90,24 @@ const EvaluationsGrid = (props) => {
         <DefaultActions
             row={row}
             onEdit={() => redirectEdit(row.id)}
-            onDelete={() => openModalDelete(row)}
+            //onDelete={() => openModalDelete(row)}
             onChangeStatus={() => setIdChangeStatus(row.id)}
         />
     );
 
     const columns = [
-		{ name: 'code', label: 'Codigo' },
-		{ name: 'patient_name', label: 'Paciente' },
-		{ name: 'creation_date', label: 'Fecha de Creacion' },
-		{ name: 'phase_name', label: 'Fase' },
-		{ name: 'target_name', label: 'Objetivo' },
-		{ name: 'start_date', label: 'Fecha inicio' },
-		{ name: 'end_date', label: 'Fecha final' },
-		{ name: 'clinical_team', label: 'Apreciacion Equipo Clinico' },
-		{ name: 'achievement', label: 'Logros y Dificultades' },
-		{ name: 'strategy', label: 'Estrategias Utilizadas' },
-		{ name: 'requirement', label: 'Exigencias' },
-		{ name: 'test', label: 'Evaluacion' },
+        //	{ name: 'code', label: 'Codigo' },
+        { name: 'patient_name', label: 'Paciente' },
+        { name: 'creation_date', label: 'Fecha de Creacion' },
+        { name: 'phase_name', label: 'Fase' },
+        { name: 'target_name', label: 'Objetivo' },
+        { name: 'start_date', label: 'Fecha inicio' },
+        { name: 'end_date', label: 'Fecha final' },
+        //	{ name: 'clinical_team', label: 'Apreciacion Equipo Clinico' },
+        //	{ name: 'achievement', label: 'Logros y Dificultades' },
+        //	{ name: 'strategy', label: 'Estrategias Utilizadas' },
+        //	{ name: 'requirement', label: 'Exigencias' },
+        { name: 'test', label: 'Evaluacion' },
 
         {
             label: "Estado",
@@ -137,19 +137,19 @@ const EvaluationsGrid = (props) => {
             )}
             {Boolean(idChangeStatus) && (
                 <ConfirmModal
-                open
-                title={changeStatusTitle}
-                message={changeStatusMessage}
-                onClose={() => setIdChangeStatus(null)}
-                onAccept={() => onChangeStatus()}
-                createPermissions={permissions.changeStatusPermissions}
+                    open
+                    title={changeStatusTitle}
+                    message={changeStatusMessage}
+                    onClose={() => setIdChangeStatus(null)}
+                    onAccept={() => onChangeStatus()}
+                    createPermissions={permissions.changeStatusPermissions}
                 />
             )}
             {openModal && (
                 <Form
-                id={idToEdit}
-                setOpenModal={setOpenModal}
-                refreshData={tableRef}
+                    id={idToEdit}
+                    setOpenModal={setOpenModal}
+                    refreshData={tableRef}
                 />
             )}
             <Table
