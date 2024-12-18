@@ -35,6 +35,7 @@ const endPoints = {
     evolutions: {
       base: "evolutions",
       initForm: "evolutions/initform",
+      report: "evolutions/report",
     },
     evaluations: {
       base: "evaluations",
