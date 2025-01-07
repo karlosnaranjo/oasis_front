@@ -142,7 +142,7 @@ const PsychologiesForm = ({
             } = psychologies;
 
             setState({
-                code: code || "",
+                code: code || "Automático",
                 issue_date: issue_date || "",
                 patient_id: patient_id || null,
                 reason_of_visit: reason_of_visit || "",
@@ -243,6 +243,10 @@ const PsychologiesForm = ({
 
                                 <Grid item xs={6} md={6} xl={6}>
                                     <Field label="Codigo" name="code" component={TextBase}
+                                        disabled={true}
+                                        InputProps={{
+                                            readOnly: true
+                                        }}
                                     //onClick={(event) => handleChangecode(event)} 
                                     />
                                 </Grid>

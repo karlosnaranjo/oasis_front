@@ -85,7 +85,7 @@ const EvolutionsForm = ({
             } = evolutions;
 
             setState({
-                code: code || "",
+                code: code || "Automático",
                 patient_id: patient_id || null,
                 employee_id: employee_id || null,
                 date_of_evolution: date_of_evolution || "",
@@ -159,6 +159,10 @@ const EvolutionsForm = ({
 
                                 <Grid item xs={6} md={6} xl={6}>
                                     <Field label="Codigo" name="code" component={TextBase}
+                                        disabled={true}
+                                        InputProps={{
+                                            readOnly: true
+                                        }}
                                     //onClick={(event) => handleChangecode(event)} 
                                     />
                                 </Grid>
@@ -182,13 +186,12 @@ const EvolutionsForm = ({
                                 </Grid>
 
                                 <Grid item xs={6} md={6} xl={6}>
-                                    <Field label="Area que registra evolucion" name="area" component={TextBase}
-                                    //onClick={(event) => handleChangearea(event)} 
+                                    <Field label="Terapeuta que registra evolución" name="area" component={TextBase}
                                     />
                                 </Grid>
 
                                 <Grid item xs={12} md={12} xl={12}>
-                                    <Field label="Notas" name="comments" component={TextAreaBase}
+                                    <Field label="Notas" name="comments" component={TextAreaBase} rows={8}
                                     //onClick={(event) => handleChangecomments(event)} 
                                     />
                                 </Grid>
