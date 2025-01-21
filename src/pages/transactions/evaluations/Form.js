@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Grid, } from '@mui/material';
 import { Form, Field, Formik } from 'formik';
 import * as Yup from 'yup';
-import { TextBase, SelectBase, Loader } from 'components';
+import { TextBase, SelectBase, TextAreaBase, Loader } from 'components';
 import endPoints from 'endPoints/endPoints';
 import messages from 'constantes/messages';
 import { withApi, withNotification } from 'wrappers';
@@ -25,7 +25,7 @@ const validationSchema = Yup.object({
     achievement: Yup.string().required('Logros y Dificultades es requerido'),
     strategy: Yup.string().required('Estrategias Utilizadas es requerido'),
     requirement: Yup.string().required('Exigencias es requerido'),
-    test: Yup.string().required('Evaluacion es requerido'),
+    test: Yup.string().required('Evaluación es requerido'),
     status: Yup.string().required('Estado es requerido'),
 
 });
@@ -245,26 +245,26 @@ const EvaluationsForm = ({
                                     />
                                 </Grid>
 
-                                <Grid item xs={6} md={6} xl={6}>
-                                    <Field label="Apreciacion Equipo Clinico" name="clinical_team" component={TextBase}
+                                <Grid item xs={6} md={6} xl={12}>
+                                    <Field label="Apreciación Equipo Cliníco" name="clinical_team" component={TextAreaBase} rows={8}
                                     //onClick={(event) => handleChangeclinical_team(event)} 
                                     />
                                 </Grid>
 
-                                <Grid item xs={6} md={6} xl={6}>
-                                    <Field label="Logros y Dificultades" name="achievement" component={TextBase}
+                                <Grid item xs={6} md={6} xl={12}>
+                                    <Field label="Logros y Dificultades" name="achievement" component={TextAreaBase} rows={8}
                                     //onClick={(event) => handleChangeachievement(event)} 
                                     />
                                 </Grid>
 
-                                <Grid item xs={6} md={6} xl={6}>
-                                    <Field label="Estrategias Utilizadas" name="strategy" component={TextBase}
+                                <Grid item xs={6} md={6} xl={12}>
+                                    <Field label="Estrategias Utilizadas" name="strategy" component={TextAreaBase} rows={8}
                                     //onClick={(event) => handleChangestrategy(event)} 
                                     />
                                 </Grid>
 
-                                <Grid item xs={6} md={6} xl={6}>
-                                    <Field label="Exigencias" name="requirement" component={TextBase}
+                                <Grid item xs={6} md={6} xl={12}>
+                                    <Field label="Exigencias" name="requirement" component={TextAreaBase} rows={8}
                                     //onClick={(event) => handleChangerequirement(event)} 
                                     />
                                 </Grid>
