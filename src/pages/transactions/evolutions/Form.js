@@ -186,7 +186,7 @@ const EvolutionsForm = ({
                                 </Grid>
 
                                 <Grid item xs={6} md={6} xl={6}>
-                                    <Field label="Terapeuta que registra evolución" name="area" component={TextBase}
+                                    <Field label="Área que registra evolución" name="area" component={TextBase}
                                     />
                                 </Grid>
 

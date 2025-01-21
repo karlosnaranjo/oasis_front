@@ -294,13 +294,13 @@ const PsychologiesForm = ({
                                 </Grid>
 
                                 <Grid item xs={12} md={12} xl={12}>
-                                    <Field label="Via de administracion" name="way_administration" component={TextAreaBase}
+                                    <Field label="Via de administración" name="way_administration" component={TextAreaBase}
                                     //onClick={(event) => handleChangeway_administration(event)} 
                                     />
                                 </Grid>
 
                                 <Grid item xs={12} md={12} xl={12}>
-                                    <Field label="Otras subtancias" name="other_substances" component={TextAreaBase}
+                                    <Field label="Otras sustancias" name="other_substances" component={TextAreaBase}
                                     //onClick={(event) => handleChangeother_substances(event)} 
                                     />
                                 </Grid>
@@ -354,7 +354,7 @@ const PsychologiesForm = ({
                                 </Grid>
 
                                 <Grid item xs={12} md={12} xl={12}>
-                                    <Field label="Orientacion (Persona, espacio y tiempo):" name="orientation" component={TextAreaBase}
+                                    <Field label="Orientación (Persona, espacio y tiempo):" name="orientation" component={TextAreaBase}
                                     //onClick={(event) => handleChangeorientation(event)} 
                                     />
                                 </Grid>
@@ -372,13 +372,13 @@ const PsychologiesForm = ({
                                 </Grid>
 
                                 <Grid item xs={12} md={12} xl={12}>
-                                    <Field label="Alimentacion" name="feeding" component={TextAreaBase}
+                                    <Field label="Alimentación" name="feeding" component={TextAreaBase}
                                     //onClick={(event) => handleChangefeeding(event)} 
                                     />
                                 </Grid>
 
                                 <Grid item xs={12} md={12} xl={12}>
-                                    <Field label="Sueno" name="sleep" component={TextAreaBase}
+                                    <Field label="Sueño" name="sleep" component={TextAreaBase}
                                     //onClick={(event) => handleChangesleep(event)} 
                                     />
                                 </Grid>

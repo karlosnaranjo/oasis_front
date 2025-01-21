@@ -19,34 +19,34 @@ const validationSchema = Yup.object({
     document_type: Yup.string().required('Tipo de documento es requerido'),
     code: Yup.string().required('Numero es requerido'),
     name: Yup.string().required('Nombres es requerido'),
-    image: Yup.string().required('Imagen es requerido'),
+    //image: Yup.string().required('Imagen es requerido'),
     gender: Yup.string().required('Genero es requerido'),
-    marital_status: Yup.string().required('Estado Civil es requerido'),
-    date_of_birth: Yup.string().required('Fecha de Nacimiento es requerido'),
-    address1: Yup.string().required('Direccion 1 es requerido'),
-    phone: Yup.string().required('Telefono es requerido'),
+    //marital_status: Yup.string().required('Estado Civil es requerido'),
+    //date_of_birth: Yup.string().required('Fecha de Nacimiento es requerido'),
+    //address1: Yup.string().required('Direccion 1 es requerido'),
+    //phone: Yup.string().required('Telefono es requerido'),
     cellphone: Yup.string().required('Celular es requerido'),
-    email: Yup.string().required('E-Mail es requerido'),
-    job_title: Yup.string().required('Ocupacion es requerido'),
-    health_insurance: Yup.string().required('EPS es requerido'),
-    level_of_education: Yup.string().required('Escolaridad es requerido'),
-    admission_date: Yup.string().required('Fecha de Ingreso es requerido'),
-    second_date: Yup.string().required('Fecha de Ingreso (por segunda vez) es requerido'),
-    third_date: Yup.string().required('Fecha de Ingreso (por tercera vez) es requerido'),
-    responsible_adult: Yup.string().required('Acudiente es requerido'),
-    responsible_adult_code: Yup.string().required('Documento del acudiente es requerido'),
-    relationship: Yup.string().required('Parentesco es requerido'),
-    responsible_adult_phone: Yup.string().required('Telefono es requerido'),
-    responsible_adult_cellphone: Yup.string().required('Celular es requerido'),
+    //email: Yup.string().required('E-Mail es requerido'),
+    //job_title: Yup.string().required('Ocupacion es requerido'),
+    //health_insurance: Yup.string().required('EPS es requerido'),
+    //level_of_education: Yup.string().required('Escolaridad es requerido'),
+    //admission_date: Yup.string().required('Fecha de Ingreso es requerido'),
+    //second_date: Yup.string().required('Fecha de Ingreso (por segunda vez) es requerido'),
+    //third_date: Yup.string().required('Fecha de Ingreso (por tercera vez) es requerido'),
+    //responsible_adult: Yup.string().required('Acudiente es requerido'),
+    //responsible_adult_code: Yup.string().required('Documento del acudiente es requerido'),
+    //relationship: Yup.string().required('Parentesco es requerido'),
+    //responsible_adult_phone: Yup.string().required('Telefono es requerido'),
+    //responsible_adult_cellphone: Yup.string().required('Celular es requerido'),
     drug_id: Yup.string().required('Droga de impacto es requerido'),
-    orientation: Yup.string().required('Ubicacion (Tiempo - Espacio - Persona) es requerido'),
-    body_language: Yup.string().required('Lenguaje corporal es requerido'),
-    ideation: Yup.string().required('Ideacion o intento suicida es requerido'),
-    delusions: Yup.string().required('Delirios es requerido'),
-    hallucinations: Yup.string().required('Alucinaciones es requerido'),
-    eating_problems: Yup.string().required('Problemas de alimentacion es requerido'),
-    treatment_motivations: Yup.string().required('Motivacion al tratamiento es requerido'),
-    comments: Yup.string().required('Observaciones es requerido'),
+    //orientation: Yup.string().required('Ubicacion (Tiempo - Espacio - Persona) es requerido'),
+    //body_language: Yup.string().required('Lenguaje corporal es requerido'),
+    //ideation: Yup.string().required('Ideacion o intento suicida es requerido'),
+    //delusions: Yup.string().required('Delirios es requerido'),
+    //hallucinations: Yup.string().required('Alucinaciones es requerido'),
+    //eating_problems: Yup.string().required('Problemas de alimentacion es requerido'),
+    //treatment_motivations: Yup.string().required('Motivacion al tratamiento es requerido'),
+    //comments: Yup.string().required('Observaciones es requerido'),
     employee_id: Yup.string().required('Funcionario es requerido'),
     status: Yup.string().required('Estado es requerido'),
 
@@ -74,6 +74,7 @@ const initState = {
     gender: "",
     marital_status: "",
     date_of_birth: false,
+    age: "",
     address1: false,
     address2: false,
     phone: false,
@@ -150,7 +151,7 @@ const PatientsForm = ({
 
 
             const {
-                document_type, code, name, image, gender, marital_status, date_of_birth, address1, address2, phone, cellphone, email, job_title, health_insurance, level_of_education, admission_date, second_date, third_date, responsible_adult, responsible_adult_code, relationship, responsible_adult_phone, responsible_adult_cellphone, drug_id, orientation, body_language, ideation, delusions, hallucinations, eating_problems, treatment_motivations, end_date, cause_of_end, end_date_second, cause_of_end_second, end_date_third, cause_of_end_third, comments, employee_id, status,
+                document_type, code, name, image, gender, marital_status, date_of_birth, age, address1, address2, phone, cellphone, email, job_title, health_insurance, level_of_education, admission_date, second_date, third_date, responsible_adult, responsible_adult_code, relationship, responsible_adult_phone, responsible_adult_cellphone, drug_id, orientation, body_language, ideation, delusions, hallucinations, eating_problems, treatment_motivations, end_date, cause_of_end, end_date_second, cause_of_end_second, end_date_third, cause_of_end_third, comments, employee_id, status,
             } = patients;
 
             setState({
@@ -161,6 +162,7 @@ const PatientsForm = ({
                 gender: gender || "",
                 marital_status: marital_status || "",
                 date_of_birth: date_of_birth || "",
+                age: age || "",
                 address1: address1 || "",
                 address2: address2 || "",
                 phone: phone || "",
@@ -260,15 +262,15 @@ const PatientsForm = ({
             }
         }
 
-        const params = {
-            url: `${urlBase}/${id}`,
-            data: formData,
-        };
+        // const params = {
+        //     url: `${urlBase}/${id}`,
+        //     data: formData,
+        // };
 
-        /* const params = {
+        const params = {
             url: id ? `${urlBase}/${id}` : urlBase,
-            data: data
-        }; */
+            data: formData
+        };
         const method = id ? doPut : doPost;
 
         try {
@@ -356,9 +358,18 @@ const PatientsForm = ({
                                     <Field label="Estado Civil" name="marital_status" component={SelectBase} items={marital_statusList} />
                                 </Grid>
 
-                                <Grid item xs={6} md={6} xl={6}>
+                                <Grid item xs={3} md={3} xl={3}>
                                     <Field label="Fecha de Nacimiento" name="date_of_birth" component={DatePickerBase}
                                     //onClick={(event) => handleChangedate_of_birth(event)} 
+                                    />
+                                </Grid>
+
+                                <Grid item xs={3} md={3} xl={3}>
+                                    <Field
+                                        label="Edad"
+                                        name="age"
+                                        component={TextBase}
+                                        disabled={true}
                                     />
                                 </Grid>
 
@@ -465,7 +476,7 @@ const PatientsForm = ({
                                 </Grid>
 
                                 <Grid item xs={6} md={6} xl={6}>
-                                    <Field label="Ubicacion (Tiempo - Espacio - Persona)" name="orientation" component={TextBase}
+                                    <Field label="Ubicación (Tiempo - Espacio - Persona)" name="orientation" component={TextBase}
                                     //onClick={(event) => handleChangeorientation(event)} 
                                     />
                                 </Grid>
@@ -477,7 +488,7 @@ const PatientsForm = ({
                                 </Grid>
 
                                 <Grid item xs={6} md={6} xl={6}>
-                                    <Field label="Ideacion o intento suicida" name="ideation" component={TextBase}
+                                    <Field label="Ideación o intento suicida" name="ideation" component={TextBase}
                                     //onClick={(event) => handleChangeideation(event)} 
                                     />
                                 </Grid>
@@ -495,13 +506,13 @@ const PatientsForm = ({
                                 </Grid>
 
                                 <Grid item xs={6} md={6} xl={6}>
-                                    <Field label="Problemas de alimentacion" name="eating_problems" component={TextBase}
+                                    <Field label="Problemas de alimentación" name="eating_problems" component={TextBase}
                                     //onClick={(event) => handleChangeeating_problems(event)} 
                                     />
                                 </Grid>
 
                                 <Grid item xs={6} md={6} xl={6}>
-                                    <Field label="Motivacion al tratamiento" name="treatment_motivations" component={TextBase}
+                                    <Field label="Motivación al tratamiento" name="treatment_motivations" component={TextBase}
                                     //onClick={(event) => handleChangetreatment_motivations(event)} 
                                     />
                                 </Grid>
